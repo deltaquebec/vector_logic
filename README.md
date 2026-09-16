@@ -22,13 +22,16 @@ Laconically:
 ## Repository contents
 ```
 .
+.
 ├── paper/
-│   └── quigley_daniel_compression.pdf          # main paper
+│   └── quigley_daniel_compression.pdf    main paper
 ├── code/
-│   │── make_figures.py           # figures from results csvs
-│   │── run_diagnostics.py        # on trained embeddings against feature norms
-│   │── run_separability.py       # strict linear separability of each predicate over a geometry decided by a linear feasibility problem
-│   └── run_train.py              # train geometries under mixed distributional and truth objective
+│   ├── make_figures.py                   figures from the results csvs
+│   ├── run_diagnostics.py                measurements on fixed geometry
+│   ├── run_separability.py               strict separability per predicate by linear feasibility
+│   ├── run_train.py                      training under mixed objective
+│   ├── vlcompress/                       modules
+│   └── CONCS_FEATS_concstats_brm.txt     McRae et al. 2005 feature norms
 └── README.md
 ```
 
@@ -38,6 +41,27 @@ Laconically:
 - word2vec GoogleNews binary (`gensim` required).
 - McRae et al. 2005 `CONCS_FEATS_concstats_brm.txt`.
 - Binder et al. 2016 `WordSet1_Ratings.xlsx` (optional; ratings binarized at 3.0).
+
+## Runs for reproducibility
+
+```
+python run_diagnostics.py --glove G.txt --w2v W.bin --mcrae CONCS_FEATS_concstats_brm.txt \
+    --min_true 15 --calibrate --nonlinear --no_sweep --out results_mcrae_cal
+python run_diagnostics.py --glove G.txt --w2v W.bin --wordnet 20000 --wn_min_members 30 \
+    --min_true 30 --calibrate --no_sweep --out results_wn_cal
+python run_train.py --glove G.txt --w2v W.bin --mcrae CONCS_FEATS_concstats_brm.txt \
+    --min_true 15 --iters 40 --out results_train
+python run_train.py --glove G.txt --w2v W.bin --wordnet 20000 --min_true 30 \
+    --iters 40 --out results_train
+python run_separability.py --glove G.txt --w2v W.bin --mcrae CONCS_FEATS_concstats_brm.txt
+python run_separability.py --glove G.txt --wordnet 20000 --min_true 30
+python run_separability.py --w2v W.bin --wordnet 20000 --min_true 30
+python make_figures.py --train results_train --diag results_mcrae_cal results_wn_cal --out figures
+```
+
+## Module map
+
+`embeddings.py` loads vectors and builds `H` over a list of entities. `norms.py` builds long-form lexicons from McRae, Binder, and WordNet, and `truth_matrix` turns one into `T` with thresholds on positives and negatives. `criterion.py` holds the rank, projector, defect, principal angles, and separability. `sweep.py` holds ridge readouts, probes, forced zero angles, and the PCA dimension sweep. `calib.py` holds the monotone and two-layer readouts, `relations.py` the bilinear residuals, `parallel.py` the parallelogram statistic, and `train.py` the alternating least squares and the closed forms.
 
 ## Acknowledgments
 
