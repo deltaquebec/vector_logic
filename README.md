@@ -21,7 +21,7 @@ Laconically:
 
 ## Repository contents
 
-Note: need GloVe and word2vec in code root directory
+Note: need GloVe and word2vec
 
 ```
 
@@ -39,10 +39,13 @@ Note: need GloVe and word2vec in code root directory
 
 ## Data
 
-- GloVe text file, e.g. `glove.6B.300d.txt`.
-- word2vec GoogleNews binary (`gensim` required).
-- McRae et al. 2005 `CONCS_FEATS_concstats_brm.txt`.
-- Binder et al. 2016 `WordSet1_Ratings.xlsx` (optional; ratings binarized at 3.0).
+Place the embeddings in `code/`, or pass paths.
+
+- GloVe text vectors, for instance `glove.6B.300d.txt`.
+- word2vec GoogleNews binary, which needs `gensim`.
+- `CONCS_FEATS_concstats_brm.txt`, the McRae et al. 2005 feature norms, in the repository.
+- WordNet through `nltk`, after `nltk.download('wordnet')`.
+- Optionally `WordSet1_Ratings.xlsx`, the Binder et al. 2016 ratings, binarized at 3.0.
 
 ## Runs for reproducibility
 
