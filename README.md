@@ -1,4 +1,4 @@
-# vector_logic
+# Faithful compression in a vector logic for formal semantics
 
 This repository accompanies the paper:
 
