@@ -20,9 +20,11 @@ Laconically:
 - We show that many predicates were linearly separable, but none was exactly affine-recoverable from the pretrained embeddings. Supervision achieved numerical exactness; approximate recovery retained most pretrained variance.
 
 ## Repository contents
+
+Note: need GloVe and word2vec in code root directory
+
 ```
-.
-.
+
 ├── paper/
 │   └── quigley_daniel_compression.pdf    main paper
 ├── code/
