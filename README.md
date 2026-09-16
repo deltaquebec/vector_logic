@@ -64,7 +64,7 @@ python run_separability.py --w2v W.bin --wordnet 20000 --min_true 30
 python make_figures.py --train results_train --diag results_mcrae_cal results_wn_cal --out figures
 ```
 
-## Module map
+## Modules
 
 `embeddings.py` loads vectors and builds `H` over a list of entities. `norms.py` builds long-form lexicons from McRae, Binder, and WordNet, and `truth_matrix` turns one into `T` with thresholds on positives and negatives. `criterion.py` holds the rank, projector, defect, principal angles, and separability. `sweep.py` holds ridge readouts, probes, forced zero angles, and the PCA dimension sweep. `calib.py` holds the monotone and two-layer readouts, `relations.py` the bilinear residuals, `parallel.py` the parallelogram statistic, and `train.py` the alternating least squares and the closed forms.
 
