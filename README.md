@@ -2,9 +2,9 @@
 
 This repository accompanies the paper:
 
-> **Faithful compression in a vector logic for formal semantics**
+> **Exact semantic readout from compressed vector representations**
 > Daniel Quigley
-> [arXiv link](https://www.arxiv.org/abs/2512.06205)
+> [arXiv link](https://arxiv.org/abs/2609.18047)
 
 ## Overview
 
@@ -74,13 +74,13 @@ The observation that an embedding layer is a linear map on one-hot inputs, and i
 
 ## Citation
 ```bibtex
-@misc{quigley2026compression,
-      title={Faithful compression in a vector logic for formal semantics}, 
+@misc{quigley2026exactsemanticreadoutcompressed,
+      title={Exact semantic readout from compressed vector representations}, 
       author={Daniel Quigley},
       year={2026},
-      eprint={2512.06205},
+      eprint={2609.18047},
       archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2512.06205}, 
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2609.18047}, 
 }
 ```
